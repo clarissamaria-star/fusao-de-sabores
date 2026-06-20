@@ -312,8 +312,8 @@
         /* ══════════════════════════════════════
            SEÇÕES
         ══════════════════════════════════════ */
-        .section { background: var(--bg); padding: 28px 16px; }
-        .section + .section { border-top: 1px solid var(--border); }
+        .section { background: var(--bg); padding: 28px 16px; display: none; }
+        .section.show { display: block; }
 
         .sec-header {
             display: flex;
@@ -1579,7 +1579,7 @@
 <!-- ═══════════════════════════════════════
      MARMITAS
 ════════════════════════════════════════ -->
-<section class="section" id="marmitas">
+<section class="section show" id="marmitas">
     <div class="sec-header">
         <h2 class="sec-title"><i data-lucide="utensils-crossed"></i> Marmitas</h2>
         <div class="sec-line"></div>
@@ -2222,23 +2222,13 @@
     function goTo(id, btn) {
         document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const el = document.getElementById(id);
-        const navH = document.getElementById('navTabs').offsetHeight;
-        window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - navH - 6, behavior: 'smooth' });
+        // mostra só a seção escolhida (as outras ficam ocultas)
+        document.querySelectorAll('.section').forEach(s => s.classList.toggle('show', s.id === id));
+        renderIcons();
+        // sobe a tela até as abas para começar a categoria do topo
+        const tabsTop = document.getElementById('navTabs').offsetTop;
+        window.scrollTo({ top: tabsTop, behavior: 'smooth' });
     }
-
-    window.addEventListener('scroll', () => {
-        const navH = document.getElementById('navTabs').offsetHeight;
-        const secs = ['marmitas','sanduiches','bebidas','combos'];
-        let cur = secs[0];
-        secs.forEach(id => {
-            const el = document.getElementById(id);
-            if (el && el.getBoundingClientRect().top <= navH + 80) cur = id;
-        });
-        document.querySelectorAll('.tab').forEach(b => {
-            b.classList.toggle('active', b.dataset.sec === cur);
-        });
-    }, { passive: true });
 
     /* ── MODAL ── */
     function openMarmita(tipo) {
