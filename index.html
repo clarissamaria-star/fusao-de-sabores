@@ -61,6 +61,7 @@
             flex-direction: column;
             overflow: hidden;
         }
+        @media (min-width: 700px) { .hero { min-height: 420px; } }
 
         .hero-bg {
             position: absolute;
@@ -70,8 +71,19 @@
                     rgba(0,0,0,0) 0%,
                     rgba(0,0,0,.08) 45%,
                     rgba(26,26,26,.78) 100%),
-                url('fotos/hero-paisagem.png') center top/cover no-repeat;
+                url('fotos/hero-retrato.png') center top/cover no-repeat;
             background-color: var(--dark);
+        }
+        /* Web / telas largas: usa a foto deitada (paisagem) */
+        @media (min-width: 700px) {
+            .hero-bg {
+                background:
+                    linear-gradient(180deg,
+                        rgba(0,0,0,0) 0%,
+                        rgba(0,0,0,.08) 45%,
+                        rgba(26,26,26,.78) 100%),
+                    url('fotos/hero-paisagem.png') center top/cover no-repeat;
+            }
         }
 
         .hero-content {
