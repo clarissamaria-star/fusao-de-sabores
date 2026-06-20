@@ -1335,12 +1335,28 @@
         .section:last-of-type,
         .footer { padding-bottom: 80px; }
         body.has-cart-bar .float-wa { bottom: 88px; }
+
+        /* ── Ícones (Lucide) ── */
+        .lucide {
+            width: 1em; height: 1em;
+            display: inline-block;
+            vertical-align: -0.14em;
+            stroke-width: 2;
+            flex: none;
+        }
+        /* pares de ícone (combos com 2 itens) */
+        .icon-pair { display: inline-flex; align-items: center; gap: .14em; }
+        /* ícone + texto em botões/títulos */
+        .ic-txt { display: inline-flex; align-items: center; gap: .45em; }
+        /* checkbox/radio das opções */
+        .opt-box .lucide { width: 14px; height: 14px; stroke-width: 3; }
+        .entrega-opt span .lucide { width: 1.4rem; height: 1.4rem; }
     </style>
 </head>
 <body>
 
 <!-- FLOATING WA -->
-<a href="https://wa.me/5537999811155" target="_blank" class="float-wa" title="Peça pelo WhatsApp">💬</a>
+<a href="https://wa.me/5537999811155" target="_blank" class="float-wa" title="Peça pelo WhatsApp"><i data-lucide="message-circle"></i></a>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -1351,7 +1367,7 @@
         <span class="cart-bar-qty" id="cartBarQty"></span>
         <span class="cart-bar-total" id="cartBarTotal">R$ 0,00</span>
     </div>
-    <button class="cart-bar-btn" onclick="toggleCart()">🛒 Ver Carrinho</button>
+    <button class="cart-bar-btn ic-txt" onclick="toggleCart()"><i data-lucide="shopping-cart"></i> Ver Carrinho</button>
 </div>
 
 <!-- ═══════════════════════════════════════
@@ -1365,7 +1381,7 @@
         <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 18px 0;">
             <img src="logo.png" alt="Fusão de Sabores" class="hero-logo" style="height:70px;margin-bottom:0;">
             <button class="cart-btn" onclick="toggleCart()" aria-label="Carrinho">
-                🛒
+                <i data-lucide="shopping-cart"></i>
                 <span class="cart-badge" id="cartBadge"></span>
             </button>
         </div>
@@ -1375,14 +1391,14 @@
                 Comida de verdade,<br>feita na hora e com <strong>muito sabor.</strong>
             </p>
             <a href="https://wa.me/5537999811155" class="btn-wa-hero" target="_blank">
-                💬 Peça Agora pelo WhatsApp
+                <i data-lucide="message-circle"></i> Peça Agora pelo WhatsApp
             </a>
         </div>
 
         <div class="hero-status">
             <div class="status-item"><div class="dot-green"></div><span>Aberto agora</span></div>
-            <div class="status-item">⏱️ 30–40 min</div>
-            <div class="status-item">📍 Entrega disponível</div>
+            <div class="status-item"><i data-lucide="timer"></i> 30–40 min</div>
+            <div class="status-item"><i data-lucide="map-pin"></i> Entrega disponível</div>
         </div>
     </div>
 </header>
@@ -1392,10 +1408,10 @@
 ════════════════════════════════════════ -->
 <nav class="tabs-wrap" id="navTabs">
     <div class="tabs-scroll">
-        <button class="tab active" data-sec="marmitas"   onclick="goTo('marmitas',this)">🍱 Marmitas</button>
-        <button class="tab"        data-sec="sanduiches" onclick="goTo('sanduiches',this)">🍔 Sanduíches</button>
-        <button class="tab"        data-sec="bebidas"    onclick="goTo('bebidas',this)">🥤 Bebidas</button>
-        <button class="tab"        data-sec="combos"     onclick="goTo('combos',this)">⚡ Combos</button>
+        <button class="tab active" data-sec="marmitas"   onclick="goTo('marmitas',this)"><i data-lucide="utensils-crossed"></i> Marmitas</button>
+        <button class="tab"        data-sec="sanduiches" onclick="goTo('sanduiches',this)"><i data-lucide="sandwich"></i> Sanduíches</button>
+        <button class="tab"        data-sec="bebidas"    onclick="goTo('bebidas',this)"><i data-lucide="cup-soda"></i> Bebidas</button>
+        <button class="tab"        data-sec="combos"     onclick="goTo('combos',this)"><i data-lucide="zap"></i> Combos</button>
     </div>
 </nav>
 
@@ -1403,13 +1419,13 @@
      DESTAQUES (carrossel)
 ════════════════════════════════════════ -->
 <div class="destaques-wrap">
-    <div class="destaques-title">🔥 Mais pedidos</div>
+    <div class="destaques-title"><i data-lucide="flame"></i> Mais pedidos</div>
     <div class="destaques-scroll">
 
         <!-- cada .dest-img recebe style="--foto:url('fotos/nome.jpg')" quando tiver a foto -->
         <div class="dest-card" onclick="addSimple('X Bacon Fusão',21.99)">
             <div class="dest-img" style="">
-                <span>🍔</span>
+                <span><i data-lucide="sandwich"></i></span>
             </div>
             <div class="dest-body">
                 <div class="dest-name">X Bacon</div>
@@ -1419,7 +1435,7 @@
 
         <div class="dest-card" onclick="openMarmita('pequena')">
             <div class="dest-img" >
-                <span>🍱</span>
+                <span><i data-lucide="utensils-crossed"></i></span>
             </div>
             <div class="dest-body">
                 <div class="dest-name">Marmita P</div>
@@ -1429,7 +1445,7 @@
 
         <div class="dest-card" onclick="openMarmita('grande')">
             <div class="dest-img" >
-                <span>🥘</span>
+                <span><i data-lucide="cooking-pot"></i></span>
             </div>
             <div class="dest-body">
                 <div class="dest-name">Marmita G</div>
@@ -1439,7 +1455,7 @@
 
         <div class="dest-card" onclick="addSimple('X Tudo Fusão',27.99)">
             <div class="dest-img" >
-                <span>🍔</span>
+                <span><i data-lucide="sandwich"></i></span>
             </div>
             <div class="dest-body">
                 <div class="dest-name">X Tudo</div>
@@ -1449,7 +1465,7 @@
 
         <div class="dest-card" onclick="addSimple('Sanduíche Grego',20.00)">
             <div class="dest-img" >
-                <span>🥖</span>
+                <span><i data-lucide="sandwich"></i></span>
             </div>
             <div class="dest-body">
                 <div class="dest-name">Grego</div>
@@ -1465,7 +1481,7 @@
 ════════════════════════════════════════ -->
 <section class="section" id="marmitas">
     <div class="sec-header">
-        <h2 class="sec-title">🍱 Marmitas</h2>
+        <h2 class="sec-title"><i data-lucide="utensils-crossed"></i> Marmitas</h2>
         <div class="sec-line"></div>
     </div>
 
@@ -1473,9 +1489,9 @@
 
         <!-- FOTO: fotos/marmita-p.jpg -->
         <div class="card" onclick="openMarmita('pequena')">
-            <div class="card-tag tag-hot">🔥 Popular</div>
+            <div class="card-tag tag-hot"><i data-lucide="flame"></i> Popular</div>
             <div class="card-img" >
-                <span class="ico">🍱</span>
+                <span class="ico"><i data-lucide="utensils-crossed"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">Marmita Pequena</div>
@@ -1489,9 +1505,9 @@
 
         <!-- FOTO: fotos/marmita-g.jpg -->
         <div class="card" onclick="openMarmita('grande')">
-            <div class="card-tag tag-dest">⭐ Destaque</div>
+            <div class="card-tag tag-dest"><i data-lucide="star"></i> Destaque</div>
             <div class="card-img" >
-                <span class="ico">🥘</span>
+                <span class="ico"><i data-lucide="cooking-pot"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">Marmita Grande</div>
@@ -1507,20 +1523,20 @@
 
     <!-- Adicionais -->
     <div class="adic-wrap">
-        <div class="adic-label">➕ Adicionais &nbsp;<span>+ R$ 6,00 cada</span></div>
+        <div class="adic-label"><i data-lucide="plus"></i> Adicionais &nbsp;<span>+ R$ 6,00 cada</span></div>
         <div class="adic-grid">
             <div class="adic-card" onclick="addSimple('Adicional: Bife Bovino',6.00)">
-                <div class="adic-name">🥩 Bife Bovino</div>
+                <div class="adic-name"><i data-lucide="beef"></i> Bife Bovino</div>
                 <div class="adic-price">+ R$ 6,00</div>
                 <button class="btn-add" style="width:30px;height:30px;font-size:1rem" onclick="event.stopPropagation();addSimple('Adicional: Bife Bovino',6.00)">+</button>
             </div>
             <div class="adic-card" onclick="addSimple('Adicional: Bife Suíno',6.00)">
-                <div class="adic-name">🥩 Bife Suíno</div>
+                <div class="adic-name"><i data-lucide="beef"></i> Bife Suíno</div>
                 <div class="adic-price">+ R$ 6,00</div>
                 <button class="btn-add" style="width:30px;height:30px;font-size:1rem" onclick="event.stopPropagation();addSimple('Adicional: Bife Suíno',6.00)">+</button>
             </div>
             <div class="adic-card" onclick="addSimple('Adicional: Omelete com peito de peru e queijo',6.00)">
-                <div class="adic-name">🍳 Omelete c/ peito de peru defumado e queijo</div>
+                <div class="adic-name"><i data-lucide="egg"></i> Omelete c/ peito de peru defumado e queijo</div>
                 <div class="adic-price">+ R$ 6,00</div>
                 <button class="btn-add" style="width:30px;height:30px;font-size:1rem" onclick="event.stopPropagation();addSimple('Adicional: Omelete com peito de peru e queijo',6.00)">+</button>
             </div>
@@ -1533,7 +1549,7 @@
 ════════════════════════════════════════ -->
 <section class="section" id="sanduiches">
     <div class="sec-header">
-        <h2 class="sec-title">🍔 Sanduíches</h2>
+        <h2 class="sec-title"><i data-lucide="sandwich"></i> Sanduíches</h2>
         <div class="sec-line"></div>
     </div>
 
@@ -1541,9 +1557,9 @@
 
         <!-- FOTO: fotos/x-bacon.jpg -->
         <div class="card" onclick="addSimple('X Bacon Fusão',21.99,'Pão de hambúrguer, carne bovina, ovo, presunto, mussarela, milho, alface, tomate, batata palha e molho especial.')">
-            <div class="card-tag tag-hot">🔥 Mais Pedido</div>
+            <div class="card-tag tag-hot"><i data-lucide="flame"></i> Mais Pedido</div>
             <div class="card-img" style="">
-                <span class="ico">🍔</span>
+                <span class="ico"><i data-lucide="sandwich"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">X Bacon Fusão</div>
@@ -1558,7 +1574,7 @@
         <!-- FOTO: fotos/x-salada.jpg -->
         <div class="card" onclick="addSimple('X Salada Fusão',17.99,'Pão de hambúrguer, carne bovina, cheddar, presunto, mussarela, milho, batata palha e molho especial.')">
             <div class="card-img" >
-                <span class="ico">🥙</span>
+                <span class="ico"><i data-lucide="sandwich"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">X Salada Fusão</div>
@@ -1572,9 +1588,9 @@
 
         <!-- FOTO: fotos/x-tudo.jpg -->
         <div class="card" onclick="addSimple('X Tudo Fusão',27.99,'Pão de hambúrguer, carne bovina, ovo, presunto, mussarela, frango desfiado, salada, milho e molho especial.')">
-            <div class="card-tag tag-dest">⭐ Destaque</div>
+            <div class="card-tag tag-dest"><i data-lucide="star"></i> Destaque</div>
             <div class="card-img" >
-                <span class="ico">🍔</span>
+                <span class="ico"><i data-lucide="sandwich"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">X Tudo Fusão</div>
@@ -1588,9 +1604,9 @@
 
         <!-- FOTO: fotos/x-familia.jpg -->
         <div class="card" onclick="addSimple('X Tudo Fusão Família',38.99,'Duas carnes bovinas, bacon, frango desfiado, calabresa, catupiry, presunto, mussarela, ovo e molho especial.')">
-            <div class="card-tag tag-fam">👨‍👩‍👧‍👦 Família</div>
+            <div class="card-tag tag-fam"><i data-lucide="users"></i> Família</div>
             <div class="card-img" >
-                <span class="ico">🍔</span>
+                <span class="ico"><i data-lucide="sandwich"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">X Tudo Família</div>
@@ -1605,7 +1621,7 @@
         <!-- FOTO: fotos/grego.jpg -->
         <div class="card" onclick="addSimple('Sanduíche Grego',20.00,'Pão francês, carne de churrasco, molho especial, vinagrete, presunto, mussarela, milho, salada e batata palha.')">
             <div class="card-img" >
-                <span class="ico">🥖</span>
+                <span class="ico"><i data-lucide="sandwich"></i></span>
             </div>
             <div class="card-body">
                 <div class="card-name">Sanduíche Grego</div>
@@ -1625,25 +1641,25 @@
 ════════════════════════════════════════ -->
 <section class="section" id="bebidas">
     <div class="sec-header">
-        <h2 class="sec-title">🥤 Bebidas</h2>
+        <h2 class="sec-title"><i data-lucide="cup-soda"></i> Bebidas</h2>
         <div class="sec-line"></div>
     </div>
 
     <div class="bebidas-box">
-        <div class="bebidas-icon">🥤</div>
+        <div class="bebidas-icon"><i data-lucide="cup-soda"></i></div>
         <div class="bebidas-text">
             Bebidas geladas para completar seu pedido!<br>
             Consulte disponibilidade pelo WhatsApp.
         </div>
         <div class="chips">
-            <div class="chip">🥤 Refrigerantes</div>
-            <div class="chip">💧 Água</div>
-            <div class="chip">🍊 Sucos</div>
-            <div class="chip">⚡ Energéticos</div>
+            <div class="chip"><i data-lucide="cup-soda"></i> Refrigerantes</div>
+            <div class="chip"><i data-lucide="droplet"></i> Água</div>
+            <div class="chip"><i data-lucide="citrus"></i> Sucos</div>
+            <div class="chip"><i data-lucide="zap"></i> Energéticos</div>
         </div>
-        <a href="https://wa.me/5537999811155?text=Olá!%20Quero%20saber%20as%20bebidas%20disponíveis%20😊"
+        <a href="https://wa.me/5537999811155?text=Olá!%20Quero%20saber%20as%20bebidas%20disponíveis%20"
            target="_blank" class="btn-wa-sm">
-            💬 Consultar Bebidas
+            <i data-lucide="message-circle"></i> Consultar Bebidas
         </a>
     </div>
 </section>
@@ -1653,7 +1669,7 @@
 ════════════════════════════════════════ -->
 <section class="section" id="combos">
     <div class="sec-header">
-        <h2 class="sec-title">⚡ Combos</h2>
+        <h2 class="sec-title"><i data-lucide="zap"></i> Combos</h2>
         <div class="sec-line"></div>
     </div>
 
@@ -1662,10 +1678,10 @@
         <!-- FOTO: fotos/combo-marmita.jpg -->
         <div class="combo-card" onclick="addSimple('Combo Marmita + Refrigerante',0,'Marmita (P ou G) + Refrigerante')">
             <div class="combo-img" >
-                <span>🍱🥤</span>
+                <span class="icon-pair"><i data-lucide="utensils-crossed"></i><i data-lucide="cup-soda"></i></span>
             </div>
             <div class="combo-body">
-                <div class="combo-badge">🔥 Econômico</div>
+                <div class="combo-badge"><i data-lucide="flame"></i> Econômico</div>
                 <div class="combo-name">Marmita + Refri</div>
                 <div class="combo-items">Marmita Pequena ou Grande + Refrigerante gelado</div>
                 <div class="combo-footer">
@@ -1678,10 +1694,10 @@
         <!-- FOTO: fotos/combo-xsalada.jpg -->
         <div class="combo-card" onclick="addSimple('Combo X Salada + Refrigerante',0,'X Salada Fusão + Refrigerante')">
             <div class="combo-img" >
-                <span>🥙🥤</span>
+                <span class="icon-pair"><i data-lucide="sandwich"></i><i data-lucide="cup-soda"></i></span>
             </div>
             <div class="combo-body">
-                <div class="combo-badge">⭐ Popular</div>
+                <div class="combo-badge"><i data-lucide="star"></i> Popular</div>
                 <div class="combo-name">X Salada + Refri</div>
                 <div class="combo-items">X Salada Fusão + Refrigerante gelado</div>
                 <div class="combo-footer">
@@ -1694,10 +1710,10 @@
         <!-- FOTO: fotos/combo-xbacon.jpg -->
         <div class="combo-card" onclick="addSimple('Combo X Bacon + Refrigerante',0,'X Bacon Fusão + Refrigerante')">
             <div class="combo-img" style="">
-                <span>🍔🥤</span>
+                <span class="icon-pair"><i data-lucide="sandwich"></i><i data-lucide="cup-soda"></i></span>
             </div>
             <div class="combo-body">
-                <div class="combo-badge">🔥 Destaque</div>
+                <div class="combo-badge"><i data-lucide="flame"></i> Destaque</div>
                 <div class="combo-name">X Bacon + Refri</div>
                 <div class="combo-items">X Bacon Fusão + Refrigerante gelado</div>
                 <div class="combo-footer">
@@ -1710,10 +1726,10 @@
         <!-- FOTO: fotos/combo-familia.jpg -->
         <div class="combo-card" onclick="addSimple('Combo Família',0,'X Tudo Fusão Família + Refrigerante familiar')">
             <div class="combo-img" >
-                <span>🍔👨‍👩‍👧‍👦</span>
+                <span class="icon-pair"><i data-lucide="sandwich"></i><i data-lucide="users"></i></span>
             </div>
             <div class="combo-body">
-                <div class="combo-badge">👨‍👩‍👧‍👦 Família</div>
+                <div class="combo-badge"><i data-lucide="users"></i> Família</div>
                 <div class="combo-name">Combo Família</div>
                 <div class="combo-items">X Tudo Fusão Família + Refrigerante familiar</div>
                 <div class="combo-footer">
@@ -1739,25 +1755,25 @@
 
     <div class="footer-grid">
         <div>
-            <div class="ft-title">📞 Contato</div>
+            <div class="ft-title"><i data-lucide="phone"></i> Contato</div>
             <div class="ft-text">
                 WhatsApp:<br>
                 <a href="https://wa.me/5537999811155">(37) 9998-1155</a>
             </div>
         </div>
         <div>
-            <div class="ft-title">⏰ Horário</div>
+            <div class="ft-title"><i data-lucide="clock"></i> Horário</div>
             <div class="ft-text">
                 Seg. a Sex.<br>11h–14h · 18h–22h<br>
                 Sábado 11h–14h
             </div>
         </div>
         <div>
-            <div class="ft-title">📍 Endereço</div>
+            <div class="ft-title"><i data-lucide="map-pin"></i> Endereço</div>
             <div class="ft-text">[Informe o endereço aqui]</div>
         </div>
         <div>
-            <div class="ft-title">💳 Pagamento</div>
+            <div class="ft-title"><i data-lucide="credit-card"></i> Pagamento</div>
             <div class="pay-chips">
                 <div class="pay-chip">PIX</div>
                 <div class="pay-chip">Dinheiro</div>
@@ -1768,8 +1784,8 @@
     </div>
 
     <div class="social-row">
-        <a href="#" class="social-btn">📷 Instagram</a>
-        <a href="https://wa.me/5537999811155" target="_blank" class="social-btn wa-btn">💬 WhatsApp</a>
+        <a href="#" class="social-btn"><i data-lucide="instagram"></i> Instagram</a>
+        <a href="https://wa.me/5537999811155" target="_blank" class="social-btn wa-btn"><i data-lucide="message-circle"></i> WhatsApp</a>
     </div>
 
     <div class="footer-copy">© 2025 Fusão de Sabores. Todos os direitos reservados.</div>
@@ -1783,7 +1799,7 @@
         <div class="modal-handle"></div>
         <div class="modal-head">
             <div class="modal-title" id="modalTitle">Monte sua Marmita</div>
-            <button class="btn-close" onclick="closeModal()">✕</button>
+            <button class="btn-close" onclick="closeModal()"><i data-lucide="x"></i></button>
         </div>
         <div class="modal-body">
 
@@ -1799,22 +1815,22 @@
                 </div>
                 <div class="opt-list" id="listAcomp">
                     <div class="opt-item" onclick="toggleCheck(this)">
-                        <div class="opt-box">✓</div><span class="opt-label">🍚 Arroz</span>
+                        <div class="opt-box"><i data-lucide="check"></i></div><span class="opt-label"><i data-lucide="utensils"></i> Arroz</span>
                     </div>
                     <div class="opt-item" onclick="toggleCheck(this)">
-                        <div class="opt-box">✓</div><span class="opt-label">🫘 Feijão de caldo</span>
+                        <div class="opt-box"><i data-lucide="check"></i></div><span class="opt-label"><i data-lucide="bean"></i> Feijão de caldo</span>
                     </div>
                     <div class="opt-item" onclick="toggleCheck(this)">
-                        <div class="opt-box">✓</div><span class="opt-label">🫘 Tutu</span>
+                        <div class="opt-box"><i data-lucide="check"></i></div><span class="opt-label"><i data-lucide="bean"></i> Tutu</span>
                     </div>
                     <div class="opt-item" onclick="toggleCheck(this)">
-                        <div class="opt-box">✓</div><span class="opt-label">🍲 Sopa de galinha</span>
+                        <div class="opt-box"><i data-lucide="check"></i></div><span class="opt-label"><i data-lucide="soup"></i> Sopa de galinha</span>
                     </div>
                     <div class="opt-item" onclick="toggleCheck(this)">
-                        <div class="opt-box">✓</div><span class="opt-label">🥗 Maionese</span>
+                        <div class="opt-box"><i data-lucide="check"></i></div><span class="opt-label"><i data-lucide="salad"></i> Maionese</span>
                     </div>
                     <div class="opt-item" onclick="toggleCheck(this)">
-                        <div class="opt-box">✓</div><span class="opt-label">🥬 Salada</span>
+                        <div class="opt-box"><i data-lucide="check"></i></div><span class="opt-label"><i data-lucide="salad"></i> Salada</span>
                     </div>
                 </div>
             </div>
@@ -1826,16 +1842,16 @@
                 </div>
                 <div class="opt-list" id="listPrato">
                     <div class="opt-item" onclick="selectRadio(this,'listPrato')">
-                        <div class="opt-box radio">●</div><span class="opt-label">🍗 Frango ao molho</span>
+                        <div class="opt-box radio">●</div><span class="opt-label"><i data-lucide="drumstick"></i> Frango ao molho</span>
                     </div>
                     <div class="opt-item" onclick="selectRadio(this,'listPrato')">
-                        <div class="opt-box radio">●</div><span class="opt-label">🍗 Frango frito</span>
+                        <div class="opt-box radio">●</div><span class="opt-label"><i data-lucide="drumstick"></i> Frango frito</span>
                     </div>
                     <div class="opt-item" onclick="selectRadio(this,'listPrato')">
-                        <div class="opt-box radio">●</div><span class="opt-label">🥩 Carne cozida bovina</span>
+                        <div class="opt-box radio">●</div><span class="opt-label"><i data-lucide="beef"></i> Carne cozida bovina</span>
                     </div>
                     <div class="opt-item" onclick="selectRadio(this,'listPrato')">
-                        <div class="opt-box radio">●</div><span class="opt-label">🥩 Carne de lata</span>
+                        <div class="opt-box radio">●</div><span class="opt-label"><i data-lucide="beef"></i> Carne de lata</span>
                     </div>
                 </div>
             </div>
@@ -1854,7 +1870,7 @@
                 <button class="qty-btn" onclick="changeQty(1)">+</button>
             </div>
 
-            <button class="btn-confirm" onclick="confirmMarmita()">🛒 Adicionar ao Carrinho</button>
+            <button class="btn-confirm" onclick="confirmMarmita()"><i data-lucide="shopping-cart"></i> Adicionar ao Carrinho</button>
         </div>
     </div>
 </div>
@@ -1865,12 +1881,12 @@
 <div class="cart-bg" id="cartBg" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
     <div class="cart-head">
-        <div class="cart-title">🛒 Seu Pedido</div>
-        <button class="btn-close" onclick="toggleCart()">✕</button>
+        <div class="cart-title"><i data-lucide="shopping-cart"></i> Seu Pedido</div>
+        <button class="btn-close" onclick="toggleCart()"><i data-lucide="x"></i></button>
     </div>
     <div class="cart-body" id="cartBody">
         <div class="cart-empty">
-            <div class="cart-empty-icon">🛒</div>
+            <div class="cart-empty-icon"><i data-lucide="shopping-cart"></i></div>
             <div>Carrinho vazio.<br>Adicione itens para pedir!</div>
         </div>
     </div>
@@ -1880,7 +1896,7 @@
             <span class="cart-total-val" id="cartTotal">R$ 0,00</span>
         </div>
         <button class="btn-checkout" onclick="checkout()">
-            💬 Fazer Pedido pelo WhatsApp
+            <i data-lucide="message-circle"></i> Fazer Pedido pelo WhatsApp
         </button>
     </div>
 </div>
@@ -1893,33 +1909,33 @@
         <div class="modal-handle"></div>
         <div class="modal-head">
             <div class="modal-title">Confirmar Pedido</div>
-            <button class="btn-close" onclick="closeConfirm()">✕</button>
+            <button class="btn-close" onclick="closeConfirm()"><i data-lucide="x"></i></button>
         </div>
         <div class="modal-body">
 
             <!-- Dados do cliente salvo -->
             <div class="confirm-card">
-                <div class="confirm-card-title">👤 Cliente</div>
+                <div class="confirm-card-title"><i data-lucide="user"></i> Cliente</div>
                 <div class="confirm-card-val" id="cfNome"></div>
                 <div class="confirm-card-val" id="cfTel" style="color:var(--text3);font-size:.82rem"></div>
             </div>
 
             <!-- Resumo dos itens -->
             <div class="confirm-card">
-                <div class="confirm-card-title">🍽️ Pedido</div>
+                <div class="confirm-card-title"><i data-lucide="utensils"></i> Pedido</div>
                 <div class="confirm-card-val" id="cfItens"></div>
             </div>
 
             <!-- Endereço salvo -->
             <div class="confirm-card" id="cfEnderecoCard">
-                <div class="confirm-card-title">📍 Endereço de entrega</div>
+                <div class="confirm-card-title"><i data-lucide="map-pin"></i> Endereço de entrega</div>
                 <div class="confirm-card-val" id="cfEndereco"></div>
-                <button class="btn-change-addr" onclick="trocarEndereco()">✏️ Usar outro endereço</button>
+                <button class="btn-change-addr" onclick="trocarEndereco()"><i data-lucide="pencil"></i> Usar outro endereço</button>
             </div>
 
             <!-- Novo endereço (oculto por padrão) -->
             <div id="cfNovoEndereco" style="display:none">
-                <div class="opt-head" style="font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:10px;">📍 Novo endereço</div>
+                <div class="opt-head" style="font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:10px;"><i data-lucide="map-pin"></i> Novo endereço</div>
                 <input class="form-field" type="text" id="cfRua"    placeholder="Rua / Avenida *">
                 <div class="form-row">
                     <input class="form-field" type="text" id="cfNumero" placeholder="Número *" style="margin-bottom:0">
@@ -1930,7 +1946,7 @@
 
             <!-- Forma de pagamento -->
             <div class="opt-group" style="margin-bottom:0">
-                <div class="opt-head" style="font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:10px;">💳 Pagamento</div>
+                <div class="opt-head" style="font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:10px;"><i data-lucide="credit-card"></i> Pagamento</div>
                 <select class="form-field" id="cfPagamento" style="margin-bottom:0">
                     <option value="PIX">PIX</option>
                     <option value="Dinheiro">Dinheiro</option>
@@ -1943,7 +1959,7 @@
             <div class="totais-box" id="cfTotais" style="margin-top:14px"></div>
 
             <button class="btn-confirm" onclick="sendOrderConfirm()">
-                💬 Confirmar e Enviar pelo WhatsApp
+                <i data-lucide="message-circle"></i> Confirmar e Enviar pelo WhatsApp
             </button>
         </div>
     </div>
@@ -1957,7 +1973,7 @@
         <div class="modal-handle"></div>
         <div class="modal-head">
             <div class="modal-title">Finalizar Pedido</div>
-            <button class="btn-close" onclick="closeCheckout()">✕</button>
+            <button class="btn-close" onclick="closeCheckout()"><i data-lucide="x"></i></button>
         </div>
         <div class="modal-body">
 
@@ -1966,20 +1982,20 @@
 
             <!-- Dados do cliente -->
             <div class="opt-group">
-                <div class="opt-head">👤 Seus dados</div>
+                <div class="opt-head"><i data-lucide="user"></i> Seus dados</div>
                 <input class="form-field" type="text"  id="coNome"     placeholder="Seu nome completo *">
                 <input class="form-field" type="tel"   id="coTelefone" placeholder="Seu WhatsApp com DDD *">
             </div>
 
             <!-- Tipo de entrega -->
             <div class="opt-group">
-                <div class="opt-head">🛵 Tipo de entrega</div>
+                <div class="opt-head"><i data-lucide="bike"></i> Tipo de entrega</div>
                 <div class="entrega-opts">
                     <div class="entrega-opt" id="optRetirada" onclick="setEntrega('retirada')">
-                        <span>🏪</span>Retirar no local
+                        <span><i data-lucide="store"></i></span>Retirar no local
                     </div>
                     <div class="entrega-opt selected" id="optEntrega" onclick="setEntrega('entrega')">
-                        <span>🛵</span>Entrega
+                        <span><i data-lucide="bike"></i></span>Entrega
                     </div>
                 </div>
             </div>
@@ -1987,7 +2003,7 @@
             <!-- Endereço (só entrega) -->
             <div id="addressSection">
                 <div class="opt-group">
-                    <div class="opt-head">📍 Endereço de entrega</div>
+                    <div class="opt-head"><i data-lucide="map-pin"></i> Endereço de entrega</div>
                     <input class="form-field" type="text" id="coRua"    placeholder="Rua / Avenida *">
                     <div class="form-row">
                         <input class="form-field" type="text" id="coNumero" placeholder="Número *" style="margin-bottom:0">
@@ -1999,7 +2015,7 @@
 
             <!-- Forma de pagamento -->
             <div class="opt-group">
-                <div class="opt-head">💳 Forma de pagamento</div>
+                <div class="opt-head"><i data-lucide="credit-card"></i> Forma de pagamento</div>
                 <select class="form-field" id="coPagamento">
                     <option value="PIX">PIX</option>
                     <option value="Dinheiro">Dinheiro</option>
@@ -2012,11 +2028,14 @@
             <div class="totais-box" id="totaisBox"></div>
 
             <button class="btn-confirm" onclick="sendOrder()">
-                💬 Enviar Pedido pelo WhatsApp
+                <i data-lucide="message-circle"></i> Enviar Pedido pelo WhatsApp
             </button>
         </div>
     </div>
 </div>
+
+<!-- Ícones modernos (Lucide) -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
 <!-- ═══════════════════════════════════════
      JS
@@ -2097,13 +2116,13 @@
         if (obs)          detail += (detail ? ' | ' : '') + 'Obs: ' + obs;
         push(name, PRECO_MARMITA[marmitaTipo], detail, mQty);
         closeModal();
-        toast('✅ ' + name + ' adicionada!');
+        toast(name + ' adicionada!');
     }
 
     /* ── CART ── */
     function addSimple(name, price, detail) {
         push(name, price, detail || '', 1);
-        toast('✅ ' + name + ' adicionado!');
+        toast(name + ' adicionado!');
     }
 
     function push(name, price, detail, qty) {
@@ -2151,8 +2170,9 @@
         const body = document.getElementById('cartBody');
         const foot = document.getElementById('cartFoot');
         if (!cart.length) {
-            body.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div>Carrinho vazio.<br>Adicione itens para pedir!</div></div>';
+            body.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon"><i data-lucide="shopping-cart"></i></div><div>Carrinho vazio.<br>Adicione itens para pedir!</div></div>';
             foot.style.display = 'none';
+            renderIcons();
             return;
         }
         const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
@@ -2173,6 +2193,7 @@
                 <div class="ci-price">R$ ${(item.price*item.qty).toFixed(2).replace('.',',')}</div>
             </div>
         `).join('');
+        renderIcons();
     }
 
     function toggleCart() {
@@ -2276,7 +2297,7 @@
         // endereço
         if (cliente.tipoEntrega === 'retirada') {
             document.getElementById('cfEnderecoCard').style.display = 'block';
-            document.getElementById('cfEndereco').textContent = '🏪 Retirar no local';
+            document.getElementById('cfEndereco').textContent = 'Retirar no local';
         } else if (cliente.endereco) {
             document.getElementById('cfEnderecoCard').style.display = 'block';
             document.getElementById('cfEndereco').innerHTML =
@@ -2344,24 +2365,24 @@
         const subtotal  = cart.reduce((s,i)=>s+i.price*i.qty,0);
         const total     = subtotal + taxa;
 
-        let msg = `🧾 Pedido: ${numPedido}\n\n`;
-        msg += `📅 Data/Hora: ${fmtDataHora()}\n\n`;
-        msg += `👤 Cliente:\n▫️ Nome: ${nome}\n▫️ Telefone: ${tel}\n\n`;
+        let msg = `Pedido: ${numPedido}\n\n`;
+        msg += `Data/Hora: ${fmtDataHora()}\n\n`;
+        msg += `Cliente:\nNome: ${nome}\nTelefone: ${tel}\n\n`;
         cart.forEach(item => {
-            msg += `🍽️ Nome: ${item.name}\n`;
+            msg += `Item: ${item.name}\n`;
             if (item.detail) msg += `Descrição: ${item.detail}\n`;
             msg += `Quantidade: ${item.qty}x, Valor: R$ ${(item.price*item.qty).toFixed(2).replace('.',',')}\n\n`;
         });
-        msg += `💰 Valores:\nPedido: R$ ${subtotal.toFixed(2).replace('.',',')}\n`;
+        msg += `Valores:\nPedido: R$ ${subtotal.toFixed(2).replace('.',',')}\n`;
         msg += `Taxa de Entrega: R$ ${taxa.toFixed(2).replace('.',',')}\n`;
         msg += `Total: R$ ${total.toFixed(2).replace('.',',')}\n\n`;
         msg += `Forma de Pagamento: ${pgto}\n\n`;
-        msg += `📍 Endereço:\n${endereco}`;
+        msg += `Endereço:\n${endereco}`;
 
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
         cart = [];
         badge();
-        toast('✅ Pedido enviado!');
+        toast('Pedido enviado!');
     }
 
     function gerarNumPedido() {
@@ -2412,6 +2433,12 @@
         clearTimeout(_tt);
         _tt = setTimeout(() => el.classList.remove('show'), 2200);
     }
+
+    /* ── Renderiza os ícones Lucide ── */
+    function renderIcons() {
+        if (window.lucide) lucide.createIcons();
+    }
+    renderIcons();
 </script>
 </body>
 </html>
