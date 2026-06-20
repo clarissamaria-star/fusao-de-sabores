@@ -148,7 +148,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 18px;
+            gap: 14px;
             padding: 11px 20px;
             background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
             border-top: 1px solid rgba(255,255,255,.15);
@@ -159,7 +159,7 @@
             z-index: 2;
         }
 
-        .status-item { display: flex; align-items: center; gap: 5px; }
+        .status-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
 
         .info-btn-faixa {
             background: none;
@@ -1493,9 +1493,9 @@
         </div>
 
         <div class="hero-status">
-            <div class="status-item"><div class="dot-green" id="statusDot"></div><span id="statusText">Aberto agora</span></div>
+            <div class="status-item"><div class="dot-green" id="statusDot"></div><span id="statusText">Aberto</span></div>
             <div class="status-item"><i data-lucide="timer"></i> 30–40 min</div>
-            <div class="status-item"><i data-lucide="map-pin"></i> Entrega disponível</div>
+            <div class="status-item"><i data-lucide="map-pin"></i> Entrega</div>
             <button class="info-btn-faixa" onclick="openInfo()" aria-label="Informações da loja">
                 <i data-lucide="info"></i>
             </button>
@@ -2635,7 +2635,7 @@
         const turnoJantar = min >= 18*60 && min < 22*60;   // 18h–22h
         const aberto = (dia >= 1 && dia <= 6) && (turnoAlmoco || turnoJantar);
         dot.classList.toggle('fechado', !aberto);
-        txt.textContent = aberto ? 'Aberto agora' : 'Fechado agora';
+        txt.textContent = aberto ? 'Aberto' : 'Fechado';
 
         const info = document.getElementById('infoStatus');
         if (info) {
