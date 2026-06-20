@@ -162,20 +162,15 @@
         .status-item { display: flex; align-items: center; gap: 5px; }
 
         .info-btn-faixa {
-            position: absolute;
-            right: 14px; top: 50%;
-            transform: translateY(-50%);
-            width: 26px; height: 26px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.18);
-            border: 1px solid rgba(255,255,255,.35);
+            background: none;
+            border: none;
+            padding: 0;
             color: #fff;
-            display: flex; align-items: center; justify-content: center;
+            display: flex; align-items: center;
             cursor: pointer;
-            transition: background .2s;
         }
-        .info-btn-faixa .lucide { width: 15px; height: 15px; }
-        .info-btn-faixa:active { background: rgba(255,255,255,.35); }
+        .info-btn-faixa .lucide { width: 17px; height: 17px; }
+        .info-btn-faixa:active { opacity: .6; }
 
         .dot-green {
             width: 7px; height: 7px;
