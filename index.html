@@ -1352,6 +1352,76 @@
         /* checkbox/radio das opções */
         .opt-box .lucide { width: 14px; height: 14px; stroke-width: 3; }
         .entrega-opt span .lucide { width: 1.4rem; height: 1.4rem; }
+
+        /* ── Botão Info (topo) + ações do hero ── */
+        .hero-actions { display: flex; align-items: center; gap: 10px; }
+        .info-btn {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color .2s;
+        }
+        .info-btn:active { border-color: var(--primary); }
+
+        /* ── Painel de Informações ── */
+        .info-section { margin-bottom: 22px; }
+        .info-section:last-child { margin-bottom: 0; }
+        .info-section-title {
+            display: flex; align-items: center; gap: 8px;
+            font-family: 'Oswald', sans-serif;
+            font-size: .82rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .5px;
+            color: var(--text2);
+            margin-bottom: 12px;
+        }
+        .info-section-title .lucide { color: var(--primary); }
+        .info-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+        }
+        .info-status {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: .8rem; font-weight: 600;
+            padding: 3px 10px; border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .info-status.aberto  { background: #e8f5e9; color: #2e7d32; }
+        .info-status.fechado { background: #ffebee; color: #c62828; }
+        .info-hours { font-size: .9rem; color: var(--text2); line-height: 1.7; }
+        .info-pay-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .info-pay-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--bg3); border: 1px solid var(--border);
+            border-radius: 6px; padding: 8px 12px;
+            font-size: .85rem; color: var(--text2); font-weight: 500;
+        }
+        .info-pay-chip .lucide { color: var(--primary); width: 1.05em; height: 1.05em; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .info-mini {
+            background: var(--bg3); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 14px; text-align: center;
+        }
+        .info-mini .lucide { color: var(--primary); width: 1.4rem; height: 1.4rem; margin-bottom: 6px; }
+        .info-mini-label { font-size: .66rem; text-transform: uppercase; letter-spacing: .5px; color: var(--text3); margin-bottom: 4px; }
+        .info-mini-val { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+        .info-address { font-size: .92rem; color: var(--text2); line-height: 1.6; text-align: center; margin-bottom: 14px; }
+        .btn-map {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 13px;
+            background: var(--primary); color: #fff;
+            border: none; border-radius: var(--radius);
+            font-family: 'Oswald', sans-serif; font-weight: 600; font-size: .92rem;
+            text-transform: uppercase; letter-spacing: .5px;
+            text-decoration: none; cursor: pointer;
+        }
+        .btn-map:active { opacity: .88; }
     </style>
 </head>
 <body>
@@ -1376,13 +1446,18 @@
     <div class="hero">
         <div class="hero-bg"></div>
 
-        <!-- linha superior: logo + carrinho -->
+        <!-- linha superior: logo + ações -->
         <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 18px 0;">
             <img src="logo.png" alt="Fusão de Sabores" class="hero-logo" style="height:70px;margin-bottom:0;">
-            <button class="cart-btn" onclick="toggleCart()" aria-label="Carrinho">
-                <i data-lucide="shopping-cart"></i>
-                <span class="cart-badge" id="cartBadge"></span>
-            </button>
+            <div class="hero-actions">
+                <button class="info-btn" onclick="openInfo()" aria-label="Informações da loja">
+                    <i data-lucide="info"></i>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()" aria-label="Carrinho">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+            </div>
         </div>
 
         <div class="hero-content">
@@ -2033,6 +2108,77 @@
     </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     MODAL — INFORMAÇÕES DA LOJA
+════════════════════════════════════════ -->
+<div class="modal-overlay" id="infoModal">
+    <div class="modal">
+        <div class="modal-handle"></div>
+        <div class="modal-head">
+            <div class="modal-title">Informações da Loja</div>
+            <button class="btn-close" onclick="closeInfo()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+
+            <!-- Horário -->
+            <div class="info-section">
+                <div class="info-section-title"><i data-lucide="clock"></i> Horário de Funcionamento</div>
+                <div class="info-card">
+                    <div class="info-status aberto" id="infoStatus"><span class="dot-green" style="width:6px;height:6px"></span> Aberto agora</div>
+                    <div class="info-hours">
+                        <strong>Segunda a Sábado</strong><br>
+                        Almoço: 11h–14h · Jantar: 18h–22h<br>
+                        <span style="color:var(--text3)">Domingo: fechado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagamento -->
+            <div class="info-section">
+                <div class="info-section-title"><i data-lucide="credit-card"></i> Formas de Pagamento</div>
+                <div class="info-pay-chips">
+                    <div class="info-pay-chip"><i data-lucide="qr-code"></i> PIX</div>
+                    <div class="info-pay-chip"><i data-lucide="banknote"></i> Dinheiro</div>
+                    <div class="info-pay-chip"><i data-lucide="credit-card"></i> Débito</div>
+                    <div class="info-pay-chip"><i data-lucide="credit-card"></i> Crédito</div>
+                </div>
+            </div>
+
+            <!-- Tempo + Taxa -->
+            <div class="info-section">
+                <div class="info-grid">
+                    <div class="info-mini">
+                        <i data-lucide="timer"></i>
+                        <div class="info-mini-label">Tempo estimado</div>
+                        <div class="info-mini-val">30 a 40 min</div>
+                    </div>
+                    <div class="info-mini">
+                        <i data-lucide="bike"></i>
+                        <div class="info-mini-label">Taxa de entrega</div>
+                        <div class="info-mini-val">R$ 3,00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Endereço -->
+            <div class="info-section">
+                <div class="info-section-title"><i data-lucide="map-pin"></i> Endereço</div>
+                <div class="info-card">
+                    <div class="info-address">
+                        Rua Messias Jacob, nº 447<br>
+                        Centro · Pompéu — Minas Gerais
+                    </div>
+                    <a class="btn-map" target="_blank"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Rua%20Messias%20Jacob%2C%20447%20-%20Centro%2C%20Pomp%C3%A9u%20-%20MG">
+                        <i data-lucide="map"></i> Abrir Rota no Mapa
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <!-- Ícones modernos (Lucide) -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
@@ -2085,6 +2231,23 @@
         document.getElementById('marmitaModal').classList.remove('open');
         document.body.style.overflow = '';
     }
+
+    /* ── MODAL INFORMAÇÕES DA LOJA ── */
+    function openInfo() {
+        atualizarStatus();
+        document.getElementById('infoModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        renderIcons();
+    }
+
+    function closeInfo() {
+        document.getElementById('infoModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('infoModal').addEventListener('click', e => {
+        if (e.target === document.getElementById('infoModal')) closeInfo();
+    });
 
     document.getElementById('marmitaModal').addEventListener('click', e => {
         if (e.target === document.getElementById('marmitaModal')) closeModal();
@@ -2447,6 +2610,15 @@
         const aberto = (dia >= 1 && dia <= 6) && (turnoAlmoco || turnoJantar);
         dot.classList.toggle('fechado', !aberto);
         txt.textContent = aberto ? 'Aberto agora' : 'Fechado agora';
+
+        const info = document.getElementById('infoStatus');
+        if (info) {
+            info.classList.toggle('aberto', aberto);
+            info.classList.toggle('fechado', !aberto);
+            info.innerHTML = '<span class="dot-green' + (aberto ? '' : ' fechado')
+                + '" style="width:6px;height:6px"></span> '
+                + (aberto ? 'Aberto agora' : 'Fechado agora');
+        }
     }
     atualizarStatus();
     setInterval(atualizarStatus, 60000);
