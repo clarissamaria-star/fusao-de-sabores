@@ -85,6 +85,19 @@
             padding: 28px 20px;
         }
 
+        .hero-topbar {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px 28px;
+            background: linear-gradient(180deg,
+                rgba(0,0,0,.6) 0%,
+                rgba(0,0,0,.32) 55%,
+                rgba(0,0,0,0) 100%);
+        }
+
         .hero-logo {
             height: 110px;
             width: auto;
@@ -147,6 +160,22 @@
         }
 
         .status-item { display: flex; align-items: center; gap: 5px; }
+
+        .info-btn-faixa {
+            position: absolute;
+            right: 14px; top: 50%;
+            transform: translateY(-50%);
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.18);
+            border: 1px solid rgba(255,255,255,.35);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .info-btn-faixa .lucide { width: 15px; height: 15px; }
+        .info-btn-faixa:active { background: rgba(255,255,255,.35); }
 
         .dot-green {
             width: 7px; height: 7px;
@@ -1076,9 +1105,9 @@
         ══════════════════════════════════════ */
         .cart-btn {
             position: relative;
-            background: var(--bg3);
-            border: 1px solid var(--border);
-            color: var(--text2);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border: none;
+            color: #fff;
             width: 44px; height: 44px;
             border-radius: 50%;
             cursor: pointer;
@@ -1086,9 +1115,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: border-color .2s;
+            box-shadow: 0 4px 14px rgba(192,57,43,.45);
+            transition: transform .15s;
         }
-        .cart-btn:active { border-color: var(--primary); }
+        .cart-btn:active { transform: scale(.92); }
 
         .cart-badge {
             position: absolute;
@@ -1451,12 +1481,9 @@
         <div class="hero-bg"></div>
 
         <!-- linha superior: logo + ações -->
-        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 18px 0;">
+        <div class="hero-topbar">
             <img src="logo.png" alt="Fusão de Sabores" class="hero-logo" style="height:96px;margin-bottom:0;">
             <div class="hero-actions">
-                <button class="info-btn" onclick="openInfo()" aria-label="Informações da loja">
-                    <i data-lucide="info"></i>
-                </button>
                 <button class="cart-btn" onclick="toggleCart()" aria-label="Carrinho">
                     <i data-lucide="shopping-cart"></i>
                     <span class="cart-badge" id="cartBadge"></span>
@@ -1474,6 +1501,9 @@
             <div class="status-item"><div class="dot-green" id="statusDot"></div><span id="statusText">Aberto agora</span></div>
             <div class="status-item"><i data-lucide="timer"></i> 30–40 min</div>
             <div class="status-item"><i data-lucide="map-pin"></i> Entrega disponível</div>
+            <button class="info-btn-faixa" onclick="openInfo()" aria-label="Informações da loja">
+                <i data-lucide="info"></i>
+            </button>
         </div>
     </div>
 </header>
